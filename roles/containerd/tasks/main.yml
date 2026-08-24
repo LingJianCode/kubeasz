@@ -48,6 +48,9 @@
   template: src=docker.io/hosts.toml.j2 dest={{ CONTAINERD_CONFIG_DIR }}/certs.d/docker.io/hosts.toml
   when: 'ENABLE_MIRROR_REGISTRY|bool'
 
+- name: 配置信任本地仓库
+  template: src=easzlab.io.local_5000/hosts.toml.j2 dest={{ CONTAINERD_CONFIG_DIR }}/certs.d/easzlab.io.local:5000/hosts.toml
+
 - name: 配置信任 INSECURE REGISTRY 仓库
   template:
     src: hosts.toml.j2
